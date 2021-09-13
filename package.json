@@ -1,6 +1,6 @@
 {
   "name": "nsf-player",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "This is a player for NSF-format Nintendo Entertainment System music files. It's written in JavaScript and should work in any major browser.",
   "main": "nsf-player.js",
   "scripts": {}
