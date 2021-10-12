@@ -10,6 +10,18 @@ This repository has been forked from [okaybenji](https://github.com/okaybenji/ns
 ## Changes 
 
 All the changes I've made to the original code base can be found in commit [02687fb](https://github.com/ingenmaffen/nsf-player/commit/02687fbe3301cc3a3a912450653156343955fd57). I replace the octal literals with the parsed counterparts, made `Module` a global variable and exported two functions (`run` and `createNsfPlayer`).
+
+### 1.1.0 
+
+Initial release
+### 1.2.0
+
+#### Added setVolumeValue and updateVolume methods.
+
+After creating an `nsfPlayer` instance, you can access  `setVolumeValue(value)` and `updateVolume()` methods as well. 
+
+With `setVolumeValue` you can update the music volume and with `updateVolume` you can update the volume on the fly.
+
 ## How to use it (npm version) 
 
 First, install package with 

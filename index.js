@@ -2,6 +2,18 @@ export const createNsfPlayer = (audioContext) => {
   // Messages are disabled. Feel free to handle them however you like.
   const message = () => null;
 
+  let volumeValue = 1;
+
+  const setVolumeValue = (value) => {
+    volumeValue = value;
+  }
+
+  const updateVolume = () => {
+    if (volume) {
+      volume.gain.setValueAtTime(volumeValue, ctx.currentTime);
+    }
+  }
+
   const play = (fileName, trackNo) => {
     if (node) {
       node.disconnect();
@@ -40,6 +52,7 @@ export const createNsfPlayer = (audioContext) => {
   let ref;
   let emu;
   let node;
+  let volume;
 
   const parseMetadata = ref => {
     let offset = 0;
@@ -160,10 +173,13 @@ export const createNsfPlayer = (audioContext) => {
       }
     }
 
-    node.connect(ctx.destination);
+    volume = ctx.createGain();
+    node.connect(volume);
+    volume.gain.setValueAtTime(volumeValue, ctx.currentTime);
+    volume.connect(ctx.destination);
 
     window.savedReferences = [ctx, node];
   };
 
-  return { play, stop };
+  return { play, stop, setVolumeValue, updateVolume };
 };
